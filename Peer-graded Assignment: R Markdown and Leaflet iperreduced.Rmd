@@ -1,0 +1,34 @@
+---
+title: "Peer-graded Assignment: R Markdown and Leaflet reduced"
+output: html_document
+---
+#"Only" 1 thing to see in Milano
+
+Date : 15 September 2018
+
+Milano is a city full of art and history, there're tons of things to see. In this project i have choosen "only" one of them. 
+
+*NOTE: The links of "monumentsite" directs you to the wikipedia pages of the monuments. Note that are in **italian** language.*
+
+```{r, echo=FALSE, message=FALSE}
+library(leaflet)
+df <- data.frame(latitude = c(45.464104), 
+                 longitude = c(9.191909),
+                 name = c("Duomo di Milano")
+                 )
+
+#monumenticon <- makeIcon(iconUrl = "https://github.com/edubond/Developing-Data-Products-Coursera/blob/master/School-01-128.png", iconWidth = 31*215/230, iconHeight = 31, iconAnchorX = 31*215/230/2, iconAnchorY = 16)
+
+monumentsite <- c(
+  "<a href='https://it.wikipedia.org/wiki/Duomo_di_Milano'>Duomo di Milano</a>"
+)
+
+df %>% leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(
+    #icon = monumenticon
+    popup = monumentsite)
+
+
+```
+
